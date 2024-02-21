@@ -1,0 +1,21 @@
+{% load static %}
+{% block head %}
+    <title>Nuevo Artículo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="../static/css/sobremi.css">
+    <link rel="shortcut icon" type="image/png" href="{% static 'logos/logo.png' %}" />
+{% endblock %}
+
+{% block content %}
+<div class="card">
+    <img src="../static/images/gatoSobremi.png" alt="Foto de perfil">
+    <div class="name">{{ nombre }}</div>
+    <div class="description">
+        Soy un profesional apasionado por mi trabajo. 
+        ¡Conéctame para aprender más sobre mis habilidades y experiencias!
+    </div>
+</div>
+
+{% endblock content %}
+
+

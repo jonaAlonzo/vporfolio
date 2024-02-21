@@ -1,0 +1,33 @@
+/* Estilos para la tabla de empresas */
+.empresas-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.empresas-table th, .empresas-table td {
+    border: 1px solid #ddd;
+    text-align: left;
+    padding: 12px; 
+}
+
+.empresas-table th {
+    background-color: #6b5b95; /* Morado oscuro */
+    color: white; 
+}
+
+/* Estilo para filas alternas para mejorar la legibilidad */
+.empresas-table tr:nth-child(even) {
+    background-color: #f5f5f5;
+}
+
+/* Opcional: Estilos para resaltar la fila actual (puedes ajustar según tus necesidades) */
+.empresas-table tr:hover {
+    background-color: #ddd; 
+}
+
+/* Estilos para el contenido específico de la página */
+.empresas-title {
+    color: #000;
+    margin-bottom: 20px;
+}

@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block head %}
+<link rel="stylesheet" href="../static/css/estudios.css">
+<title>Estudios</title>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>Mis Estudios</h1>
+
+    <!-- Tabla de estudios -->
+    <table class="estudios-table">
+        <thead>
+            <tr>
+                <th>Año de Inicio</th>
+                <th>Año de Fin</th>
+                <th>Grado</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for estudio in estudios %}
+                <tr>
+                    <td>{{ estudio.anio_inicio }}</td>
+                    <td>{{ estudio.anio_fin }}</td>
+                    
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% if not request.user.is_authenticated %}
+{% endif %}
+
+{% if request.user.is_authenticated %}
+{% endif %}
+{% endblock content %}

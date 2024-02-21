@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+
+{% block head %}
+  <title>Habilidades del Programador</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+  <style>
+    body {
+      background-color: #f8f8f8;
+    }
+
+    h1 {
+      color: #4b0082; /* Morado oscuro */
+    }
+
+    th {
+      background-color: #000;
+      color: #fff;
+    }
+
+    td {
+      background-color: #fff;
+      color: #000;
+    }
+
+    .container {
+      margin-top: 20px;
+    }
+
+    .table {
+      margin-top: 20px;
+    }
+
+    .table tbody tr:nth-child(odd) {
+      background-color: #f2f2f2; /* Fondo gris claro para filas impares */
+    }
+
+    .table tbody tr:hover {
+      background-color: #dcdcdc; /* Fondo gris más claro al pasar el ratón */
+    }
+  </style>
+{% endblock %}
+
+{% block content %}
+  <div class="container">
+    <h1>Habilidades </h1>
+    
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Habilidad</th>
+          <th scope="col">Comentario</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for habilidad in lista_habilidades %}
+          <tr>
+            <td>{{ habilidad.nombre }}</td>
+            <td>{{ habilidad.descripcion }}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  <font size="4">
+    <ul class="pagination">
+      {% if lista_habilidades.has_previous %}
+        <li><a href="?page={{ lista_habilidades.previous_page_number }}">&laquo;</a></li>
+      {% else %}
+        <li class="disabled"><span>&laquo;</span></li>
+      {% endif %}
+      {% for i in lista_habilidades.paginator.page_range %}
+        {% if reservas.number == i %}
+          <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+        {% else %}
+          <li><a href="?page={{ i }}">{{ i }}</a></li>
+        {% endif %}
+      {% endfor %}
+      {% if lista_habilidades.has_next %}
+        <li><a href="?page={{ lista_habilidades.next_page_number }}">&raquo;</a></li>
+      {% else %}
+        <li class="disabled"><span>&raquo;</span></li>
+      {% endif %}
+    </ul>
+  </font>
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends "home.html" %}
+
+{% block content %}
+<link rel="stylesheet" href="../static/css/empresa.css">
+
+<h1 class="empresas-title">Empresas</h1>
+
+<table class="empresas-table">
+    <tr>
+        <th>Nombre</th>
+        <th>Teléfono</th>
+        <th>Fecha de Inicio</th>
+        <th>Fecha de Fin</th>
+        <th>Dirección</th>
+        <th>Correo Electrónico</th>
+        <th>Fecha de Creación</th>
+    </tr>
+    <tr>
+        <td>{{ empresa.nombre }}</td>
+        <td>{{ empresa.telefono|default:"N/A" }}</td>
+        <td>{{ empresa.fecha_inicio }}</td>
+        <td>{{ empresa.fecha_fin|default:"En funcionamiento" }}</td>
+        <td>{{ empresa.direccion }}</td>
+        <td>{{ empresa.correo_electronico|default:"N/A" }}</td>
+        <td>{{ empresa.fecha_creacion }}</td>
+    </tr>
+</table>
+
+{% endblock %}

@@ -1,0 +1,96 @@
+{% extends "base.html" %}
+{# {% load staticfiles %} #}
+{% load static %}
+
+{% block head %}
+
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+
+<style>
+  .btn-purple,.btn-success,.btn-danger{
+    background-color: purple;
+    border-color: purple;
+    width: 100px;
+    height : 40px;
+    font-size: 20px;
+    color: white;  /* Cambia el color del texto si es necesario */
+}
+</style>
+{% endblock %}
+
+ {% block content %}
+
+ <br><br><br><br>
+  <center>
+  <font color="#686868" size="5" face="Comic Sans MS,Arial,Verdana">Seguidos</font>
+
+  </center>
+
+ {% if not request.user.is_authenticated %}
+
+ {% endif %}
+
+ {% if request.user.is_authenticated %}
+ {% endif %}
+
+<font size="3">
+<table class="table table-bordered">
+	<thead>
+        <tr>
+			<th bgcolor="#F5DA81">ID</th>
+			<th bgcolor="#F5DA81">SEGUIDO</th>
+			<th colspan="4" style="text-align:center;" bgcolor="#AAF5AA">OPERACIONES</th>
+        </tr>
+		</thead>
+		<tbody>
+        {% for r in lista_seguido%}
+				<td> {{ r.id }} </td>
+                <td> {{ r.seguido|upper|slice:"0:12" }} </td>
+
+            <form action="" method="post">
+            {% csrf_token %}
+			<!-- ojo las url no llevan / -->
+      <td><a id="borrado" class='btn btn-danger btn-sm' href="{% url 'home' %}">ANULAR</a></td>
+      <td><a id="editar" class='btn btn-success btn-sm' href="{% url 'home' %}">EDITAR</a></td>
+      <td><a class='btn btn-purple btn-sm' href="{% url 'home' %}">VER</a></td>
+      <script>
+        document.getElementById('borrado').addEventListener('click', function() {
+            alert('Ha pulsado el boton borrar');
+        });
+        </script>
+    
+            </form>
+          </tr>
+        {% endfor %}
+		 </tbody>
+    </table>
+</font>
+
+{% if lista_seguidos.has_other_pages %}
+<font size="4">
+  <ul class="pagination">
+    {% if lista_seguidos.has_previous %}
+      <li><a href="?page={{ lista_seguidos.previous_page_number }}">&laquo;</a></li>
+    {% else %}
+      <li class="disabled"><span>&laquo;</span></li>
+    {% endif %}
+    {% for i in lista_seguidos.paginator.page_range %}
+      {% if reservas.number == i %}
+        <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+      {% else %}
+        <li><a href="?page={{ i }}">{{ i }}</a></li>
+      {% endif %}
+    {% endfor %}
+    {% if lista_seguidos.has_next %}
+      <li><a href="?page={{ lista_seguidos.next_page_number }}">&raquo;</a></li>
+    {% else %}
+      <li class="disabled"><span>&raquo;</span></li>
+    {% endif %}
+  </ul>
+</font>
+{% endif %}
+
+
+{% endblock content %}

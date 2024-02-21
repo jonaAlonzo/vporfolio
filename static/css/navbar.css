@@ -1,0 +1,37 @@
+/* Estilos para la barra de navegación */
+.navbar {
+    background-color: #874e96 !important; /* Morado oscuro */
+}
+
+.navbar-nav {
+    display: flex;
+    align-items: center;
+}
+
+.navbar-nav li {
+    margin-right: 10px; /* Ajusta el espaciado entre los elementos si es necesario */
+}
+
+.navbar-nav li a {
+    color: #ffffff; /* Blanco */
+    font-size: 20px;
+    transition: color 0.3s;
+}
+
+/* Estilos para el botón de registro y el botón de inicio de sesión */
+.btn-success,
+.btn-primary {
+    font-size: 22px;
+    color: #ffffff; /* Blanco */
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.btn-success:hover,
+.btn-primary:hover {
+    background-color: #6b5b95; /* Morado oscuro más claro al pasar el ratón */
+}
+
+/* Estilos para el formulario de inicio de sesión */
+.navbar-form input {
+    color: #686868; /* Gris oscuro */
+}

@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block head %}
+  <title>Networking</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+  <link rel="stylesheet" href="../static/css/home.css">
+{% endblock %}
+
+{% block content %}
+  <div class="container-home">
+    <div class="container-home-hijo">
+      {% if not request.user.is_authenticated %}
+        
+        <section class="seccion_4">
+          <h1>Proyectos</h1>
+          <div class="container-tarjetas">
+            <div class="tarjeta col-md-4 col-sm-6">
+              <img class="imagen-tarjeta" src="../static/images/CalculadoraReact.png" alt="Imagen de la tarjeta">
+              <div class="contenido-tarjeta">
+                <h2 class="titulo">Calculadora React</h2>
+                <p class="descripcion">Calculadora Interactiva desarrollada con React, una herramienta moderna y amigable para realizar operaciones matemáticas de manera eficiente.</p>
+                <a class="enlace" href="#">Ver más</a>
+              </div>
+            </div>
+            <div class="tarjeta col-md-4 col-sm-6">
+              <img class="imagen-tarjeta" src="../static/images/Tres en linea.png" alt="Imagen de la tarjeta">
+              <div class="contenido-tarjeta">
+                <h2 class="titulo">Tre en linea</h2>
+                <p class="descripcion">¡Descubre la emoción del Tres en Línea con nuestra versión moderna y atractiva! Juega ahora y desafía a tus amigos o al computador para disfrutar de horas de entretenimiento.</p>
+                <a class="enlace" href="#">Ver más</a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="seccion_1" ref={seccion1Ref} class="col-md-12">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-12">
+                {% include "sobremi.html" %}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="seccion_2" ref={seccion2Ref} class="col-md-12">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-12">
+                {% include "habilidades.html" %}
+                
+              </div>
+            </div>
+          </div>
+        </section>
+
+       
+      {% endif %}
+    </div>
+  </div>
+{% endblock %}

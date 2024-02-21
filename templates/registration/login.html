@@ -1,0 +1,70 @@
+{% load static %}
+{% block head %}
+    <title>Iniciar Sesión</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+    <link rel="shortcut icon" type="image/png" href="{% static 'logos/logo.png' %}" />
+{% endblock %}
+
+{% block content %}
+    <main>
+        <div class="container">
+            <div class="row h-100">
+                <div class="col-12 col-md-10 mx-auto my-auto">
+                    <div class="card auth-card">
+                        <div class="position-relative image-side-login">
+                            <p class="text-white h2">INICIAR SESIÓN</p>
+                            <p class="white mb-0">
+                                Use sus credenciales para ingresar.
+                                <br>Si no eres miembro &nbsp;
+                                <a href="{% url 'Login' %}" class="btn btn-primary btn-sm btn-shadow mt-1 btn-sm">Regístrate</a>
+                            </p>
+                        </div>
+                        <div class="form-side">
+                            <div align="center">
+                                <a href="#">
+                                    <span class="logo-single"></span>
+                                </a>
+                            </div>
+                            <form method='POST' action='{% url "login" %}'>
+                                {% csrf_token %}
+                                <div>
+                                    <label class="form-group has-float-label mb-4">
+                                        <input class="form-control" type="text" name='username' placeholder='Usuario' required />
+                                        <span>Nombre de usuario</span>
+                                    </label>
+                                </div>
+                               
+                                <label class="form-group has-float-label mb-4">
+                                    <div class="input-group mb-3">
+                                        <input class="form-control" type="password" id="password" placeholder="" minlength="8" name='password' required />
+                                        <div class="input-group-append pointer" id="look-pass">
+                                            <span class="input-group-text glyph-icon simple-icon-eye"></span>
+                                        </div>
+                                        <div>
+                                            <span>Contraseña</span>
+                                        </div>
+                                    
+                                </label>
+                                <div align="center">
+                                    <div class="row justify-content-end">
+                                        <div class="col-12">
+                                            <button type='submit' class="btn btn-primary btn-lg btn-shadow btn-sm">&nbsp; Iniciar Sesión &nbsp;</button>
+                                        </div>
+                                        <div class="col-12 mt-2">
+                                            <a href="#">¿Olvidó su contraseña?</a>
+                                        </div>
+                                    </div>
+                                    <div class="error-message">El Usuario o la contraseña no existen!!</div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+{% endblock content %}
+
+{% block scripts %}
+{% endblock scripts %}
